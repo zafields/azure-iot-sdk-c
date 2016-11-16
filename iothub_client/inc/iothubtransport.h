@@ -14,7 +14,10 @@ typedef struct TRANSPORT_HANDLE_DATA_TAG* TRANSPORT_HANDLE;
 #include "iothub_client_private.h"
 #include "iothub_transport_ll.h"
 
+#ifndef IOTHUB_CLIENT_INSTANCE_TYPE
 typedef struct IOTHUB_CLIENT_INSTANCE_TAG* IOTHUB_CLIENT_HANDLE;
+#define IOTHUB_CLIENT_INSTANCE_TYPE
+#endif // IOTHUB_CLIENT_INSTANCE
 
 #include "azure_c_shared_utility/umock_c_prod.h"
 #ifdef __cplusplus
