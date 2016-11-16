@@ -281,7 +281,7 @@ static void dispatch_user_callbacks(IOTHUB_CLIENT_INSTANCE* iotHubClientInstance
         size_t callbacks_length = VECTOR_size(iotHubClientInstance->saved_user_callback_list);
         for (size_t index = 0; index < callbacks_length; index++)
         {
-            USER_CALLBACK_INFO* queued_cb = VECTOR_element(iotHubClientInstance->saved_user_callback_list, index);
+            USER_CALLBACK_INFO* queued_cb = (USER_CALLBACK_INFO*)VECTOR_element(iotHubClientInstance->saved_user_callback_list, index);
             if (queued_cb != NULL)
             {
                 switch (queued_cb->type)
