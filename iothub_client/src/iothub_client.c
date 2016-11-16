@@ -184,7 +184,7 @@ static int iothub_ll_method_callback(const char* method_name, const unsigned cha
 
 static void iothub_ll_connection_status_callback(IOTHUB_CLIENT_CONNECTION_STATUS result, IOTHUB_CLIENT_CONNECTION_STATUS_REASON reason, void* userContextCallback)
 {
-    IOTHUB_QUEUE_CONTEXT* queue_context = userContextCallback;
+    IOTHUB_QUEUE_CONTEXT* queue_context = (IOTHUB_QUEUE_CONTEXT*)userContextCallback;
     if (queue_context != NULL)
     {
         USER_CALLBACK_INFO queue_cb_info;
@@ -202,7 +202,7 @@ static void iothub_ll_connection_status_callback(IOTHUB_CLIENT_CONNECTION_STATUS
 
 static void iothub_ll_event_confirm_callback(IOTHUB_CLIENT_CONFIRMATION_RESULT result, void* userContextCallback)
 {
-    IOTHUB_QUEUE_CONTEXT* queue_context = userContextCallback;
+    IOTHUB_QUEUE_CONTEXT* queue_context = (IOTHUB_QUEUE_CONTEXT*)userContextCallback;
     if (queue_context != NULL)
     {
         USER_CALLBACK_INFO queue_cb_info;
@@ -219,7 +219,7 @@ static void iothub_ll_event_confirm_callback(IOTHUB_CLIENT_CONFIRMATION_RESULT r
 
 static void iothub_ll_reported_state_callback(int status_code, void* userContextCallback)
 {
-    IOTHUB_QUEUE_CONTEXT* queue_context = userContextCallback;
+    IOTHUB_QUEUE_CONTEXT* queue_context = (IOTHUB_QUEUE_CONTEXT*)userContextCallback;
     if (queue_context != NULL)
     {
         USER_CALLBACK_INFO queue_cb_info;
@@ -236,7 +236,7 @@ static void iothub_ll_reported_state_callback(int status_code, void* userContext
 
 static void iothub_ll_device_twin_callback(DEVICE_TWIN_UPDATE_STATE update_state, const unsigned char* payLoad, size_t size, void* userContextCallback)
 {
-    IOTHUB_QUEUE_CONTEXT* queue_context = userContextCallback;
+    IOTHUB_QUEUE_CONTEXT* queue_context = (IOTHUB_QUEUE_CONTEXT*)userContextCallback;
     if (queue_context != NULL)
     {
         USER_CALLBACK_INFO queue_cb_info;
