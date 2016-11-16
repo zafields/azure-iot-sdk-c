@@ -250,7 +250,7 @@ static void iothub_ll_device_twin_callback(DEVICE_TWIN_UPDATE_STATE update_state
         }
         else
         {
-            queue_cb_info.iothub_callback.dev_twin_cb_info.payLoad = malloc(size);
+            queue_cb_info.iothub_callback.dev_twin_cb_info.payLoad = (unsigned char*)malloc(size);
             if (queue_cb_info.iothub_callback.dev_twin_cb_info.payLoad == NULL)
             {
                 LogError("failure allocating payload in device twin callback.");
@@ -732,7 +732,7 @@ IOTHUB_CLIENT_RESULT IoTHubClient_SendEventAsync(IOTHUB_CLIENT_HANDLE iotHubClie
             else
             {
                 /* Codes_SRS_IOTHUBCLIENT_07_001: [ IoTHubClient_SendEventAsync shall allocate a IOTHUB_QUEUE_CONTEXT object to be sent to the IoTHubClient_LL_SendEventAsync function as a user context. ] */
-                IOTHUB_QUEUE_CONTEXT* queue_context = malloc(sizeof(IOTHUB_QUEUE_CONTEXT));
+                IOTHUB_QUEUE_CONTEXT* queue_context = (IOTHUB_QUEUE_CONTEXT*)malloc(sizeof(IOTHUB_QUEUE_CONTEXT));
                 if (queue_context == NULL)
                 {
                     result = IOTHUB_CLIENT_ERROR;
@@ -873,7 +873,7 @@ IOTHUB_CLIENT_RESULT IoTHubClient_SetConnectionStatusCallback(IOTHUB_CLIENT_HAND
             }
             else
             {
-                IOTHUB_QUEUE_CONTEXT* queue_context = malloc(sizeof(IOTHUB_QUEUE_CONTEXT));
+                IOTHUB_QUEUE_CONTEXT* queue_context = (IOTHUB_QUEUE_CONTEXT*)malloc(sizeof(IOTHUB_QUEUE_CONTEXT));
                 if (queue_context == NULL)
                 {
                     result = IOTHUB_CLIENT_ERROR;
@@ -1095,7 +1095,7 @@ IOTHUB_CLIENT_RESULT IoTHubClient_SetDeviceTwinCallback(IOTHUB_CLIENT_HANDLE iot
             else
             {
                 /*Codes_SRS_IOTHUBCLIENT_07_002: [ IoTHubClient_SetDeviceTwinCallback shall allocate a IOTHUB_QUEUE_CONTEXT object to be sent to the IoTHubClient_LL_SetDeviceTwinCallback function as a user context. ]*/
-                IOTHUB_QUEUE_CONTEXT* iot_queued_callback = malloc(sizeof(IOTHUB_QUEUE_CONTEXT));
+                IOTHUB_QUEUE_CONTEXT* iot_queued_callback = (IOTHUB_QUEUE_CONTEXT*)malloc(sizeof(IOTHUB_QUEUE_CONTEXT));
                 if (iot_queued_callback == NULL)
                 {
                     result = IOTHUB_CLIENT_ERROR;
@@ -1154,7 +1154,7 @@ IOTHUB_CLIENT_RESULT IoTHubClient_SendReportedState(IOTHUB_CLIENT_HANDLE iotHubC
             else
             {
                 /* Codes_SRS_IOTHUBCLIENT_07_003: [ IoTHubClient_SendReportedState shall allocate a IOTHUB_QUEUE_CONTEXT object to be sent to the IoTHubClient_LL_SendReportedState function as a user context. ] */
-                IOTHUB_QUEUE_CONTEXT* queue_context = malloc(sizeof(IOTHUB_QUEUE_CONTEXT));
+                IOTHUB_QUEUE_CONTEXT* queue_context = (IOTHUB_QUEUE_CONTEXT*)malloc(sizeof(IOTHUB_QUEUE_CONTEXT));
                 if (queue_context == NULL)
                 {
                     result = IOTHUB_CLIENT_ERROR;

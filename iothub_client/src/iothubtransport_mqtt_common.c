@@ -1340,24 +1340,24 @@ static void mqtt_error_callback(MQTT_CLIENT_HANDLE handle, MQTT_CLIENT_EVENT_ERR
         }
         transport_data->isConnected = false;
         transport_data->currPacketState = PACKET_TYPE_ERROR;
-                transport_data->device_twin_get_sent = false;
+        transport_data->device_twin_get_sent = false;
         if (transport_data->topic_MqttMessage != NULL)
         {
-                transport_data->topics_ToSubscribe |= SUBSCRIBE_TELEMETRY_TOPIC;
-                }
-                if (transport_data->topic_GetState != NULL)
-                {
-                    transport_data->topics_ToSubscribe |= SUBSCRIBE_GET_REPORTED_STATE_TOPIC;
-                }
-                if (transport_data->topic_NotifyState != NULL)
-                {
-                    transport_data->topics_ToSubscribe |= SUBSCRIBE_NOTIFICATION_STATE_TOPIC;
-                }
-                if (transport_data->topic_DeviceMethods != NULL)
-                {
-                    transport_data->topics_ToSubscribe |= SUBSCRIBE_DEVICE_METHOD_TOPIC;
+            transport_data->topics_ToSubscribe |= SUBSCRIBE_TELEMETRY_TOPIC;
         }
-     }
+        if (transport_data->topic_GetState != NULL)
+        {
+            transport_data->topics_ToSubscribe |= SUBSCRIBE_GET_REPORTED_STATE_TOPIC;
+        }
+        if (transport_data->topic_NotifyState != NULL)
+        {
+            transport_data->topics_ToSubscribe |= SUBSCRIBE_NOTIFICATION_STATE_TOPIC;
+        }
+        if (transport_data->topic_DeviceMethods != NULL)
+        {
+            transport_data->topics_ToSubscribe |= SUBSCRIBE_DEVICE_METHOD_TOPIC;
+        }
+    }
     else
     {
         LogError("Failure: mqtt called back with null context.");
